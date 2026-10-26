@@ -1,5 +1,9 @@
-window.__ModuleLoader__.load({
-  id: 'dsh-douyin-browser-local',
+// 只注册一次：DSH 的客户端模块表如果把这个脚本执行两遍，第二次会抛
+// duplicate factory registration，并连带把整个 web boot 打挂。
+if (!window.__DOUYIN_BROWSER_CLIENT_LOADED__) {
+window.__DOUYIN_BROWSER_CLIENT_LOADED__ = true;
+const handoff = {
+  id: 'dsh-douyin-browser-macos',
   factory: require => {
     const React = require('react');
     const primitives = require('@deepseek-ai/dsh-client-ui-primitives');
@@ -177,4 +181,9 @@ window.__ModuleLoader__.load({
     }
     return { name: 'douyin-browser-settings', inject: ['slots', 'connection'], apply, SettingsPage, createSettingsTransport };
   },
-});
+};
+window.__ModuleLoader__.load(handoff);
+// 同一份客户端代码历史上注册为 dsh-douyin-browser-local；两个 id 都登记，
+// 免得模块表的行 id 与包名不一致时报 “loaded without registering”。
+window.__ModuleLoader__.load({ id: 'dsh-douyin-browser-local', factory: handoff.factory });
+}
