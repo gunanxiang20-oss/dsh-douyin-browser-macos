@@ -1,5 +1,9 @@
 # DSH 抖音助手 · macOS 版（WebKit 分支）
 
+# 配置前先重启dsh！！！
+# 配置前先重启dsh！！！
+# 配置前先重启dsh！！！
+## 不重启是无法生效的
 > **这是 macOS 分支 `1.4.4-mac.1`，基于上游 [LockyBee/dsh-douyin-agent](https://github.com/LockyBee/dsh-douyin-agent) 的 `dsh-douyin-browser-local@1.4.4`。**
 > 上游只支持 Windows + Microsoft Edge；本分支把浏览器层换成 **Playwright 自带的 WebKit（Safari 引擎）**，在 macOS 上不需要 Edge，也不需要单独安装 Node.js。
 > 改动清单、已知差异和回滚方式见 [MAC.md](MAC.md)。业务逻辑（限时、许可、外发核对、记忆、日报）与上游一致，未作改动。
