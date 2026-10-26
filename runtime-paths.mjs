@@ -35,7 +35,8 @@ export function resolveRuntimePaths({ env = process.env, home = homedir(), sourc
   }
   const mediaRoot = path.join(sourceRoot, 'media');
   const selected = (field, fallback) => absolute(env[FIELDS[field]] || stored[field] || fallback, field);
-  const stateDir = selected('stateDir', path.join(sourceRoot, 'state'));
+  // 默认写到用户目录，而不是插件包内：npm/git 安装时包目录每次升级都会被替换，状态会丢。
+  const stateDir = selected('stateDir', path.join(home, '.dsh', 'douyin-browser', 'state'));
   const mediaRuntimeRoot = selected('mediaRuntimeRoot', mediaRoot);
   let memoryDbPath;
   if (env.DEEPSEEK_SHARED_MEMORY_DB?.trim()) memoryDbPath = absolute(env.DEEPSEEK_SHARED_MEMORY_DB, '共享记忆数据库');
