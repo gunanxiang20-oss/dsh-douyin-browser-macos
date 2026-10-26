@@ -1,8 +1,8 @@
 {
-  "name": "dsh-douyin-browser-local",
+  "name": "dsh-douyin-browser-macos",
   "version": "1.4.4-mac.1",
   "type": "module",
-  "description": "DSH 原生抖音工具（macOS WebKit 试验分支：不需要 Edge 与 CDP）",
+  "description": "DSH 抖音助手 macOS 版：用 Playwright WebKit（Safari 引擎）替代 Edge + CDP，不需要 Edge 和独立 Node",
   "license": "MIT",
   "author": "LockyBee",
   "repository": {
@@ -14,12 +14,15 @@
     "url": "https://github.com/LockyBee/dsh-douyin-agent/issues"
   },
   "keywords": [
-    "dsh-plugin",
+    "browser-automation",
     "deepseek-harness",
     "douyin",
-    "browser-automation",
+    "dsh-plugin",
+    "local-memory",
+    "macos",
     "persona",
-    "local-memory"
+    "safari",
+    "webkit"
   ],
   "engines": {
     "node": ">=22.13",

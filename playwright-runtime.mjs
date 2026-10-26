@@ -18,9 +18,15 @@ function profileCandidates() {
 }
 
 function loadPlaywright() {
-  const attempts = [() => require('playwright-core')];
-  for (const directory of profileCandidates()) attempts.push(() => createRequire(path.join(directory, 'package.json'))('playwright-core'));
-  attempts.push(() => createRequire(require.resolve('@playwright/mcp/package.json'))('playwright-core'));
+  const attempts = [() => ({ mod: require('playwright-core'), dir: path.dirname(require.resolve('playwright-core/package.json')) })];
+  for (const directory of profileCandidates()) attempts.push(() => {
+    const scoped = createRequire(path.join(directory, 'package.json'));
+    return { mod: scoped('playwright-core'), dir: path.dirname(scoped.resolve('playwright-core/package.json')) };
+  });
+  attempts.push(() => {
+    const scoped = createRequire(require.resolve('@playwright/mcp/package.json'));
+    return { mod: scoped('playwright-core'), dir: path.dirname(scoped.resolve('playwright-core/package.json')) };
+  });
   let last;
   for (const attempt of attempts) {
     try { return attempt(); } catch (error) { last = error; }
@@ -28,5 +34,6 @@ function loadPlaywright() {
   throw last;
 }
 
-const playwright = loadPlaywright();
-export const { chromium, webkit } = playwright;
+const loaded = loadPlaywright();
+export const { chromium, webkit } = loaded.mod;
+export const playwrightPackageDir = loaded.dir;

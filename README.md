@@ -5,6 +5,19 @@
 > 改动清单、已知差异和回滚方式见 [MAC.md](MAC.md)。业务逻辑（限时、许可、外发核对、记忆、日报）与上游一致，未作改动。
 > 上游原版说明保留在下方，其中「专用 Edge」「Windows」等描述指的是原版实现。
 
+## 安装（DSH 直接从 GitHub 装）
+
+在 DSH「应用 → 桌面插件」的输入框里粘贴下面任意一行，点安装，然后完全退出并重开 DSH：
+
+```
+https://github.com/gunanxiang20-oss/dsh-douyin-browser-macos
+github:gunanxiang20-oss/dsh-douyin-browser-macos
+```
+
+首次打开抖音时如果本机还没有 WebKit 引擎，插件会自动调用自带的 Playwright 下载一次（约 90MB），不需要你手动执行 `npx playwright install`。
+
+装好后在「设置 → 刷抖音」使用：选模型 → 开始新一轮 → 打开抖音扫码登录 → 开始自主观看。详见下方上游说明和 [MAC.md](MAC.md)。
+
 1.4.4 同步修复插件和软件的分钟数字框，直接显示自主观看停止原因，并补充分享名单入口说明。查看[本版说明](docs/features-1.4.4.md)或[下载 1.4.4 软件与插件包](https://github.com/LockyBee/dsh-douyin-agent/releases/tag/v1.4.4)。包含上一版的设置通信兼容、一键自检、用量看板和主题观看。
 
 让 DSH 里的 DeepSeek（大肥鱼）自己刷抖音：搜索、换片、看真实画面，把有意思的内容记下来，并在你许可的范围内分享给好友。

@@ -2,6 +2,18 @@
 
 这个目录是从 `dsh-douyin-browser-local@1.4.4` 复制出来的本地分支，只改浏览器运行方式，其余逻辑保持原样。
 
+## 安装
+
+DSH「应用 → 桌面插件」输入框粘贴：
+
+```
+https://github.com/gunanxiang20-oss/dsh-douyin-browser-macos
+```
+
+或同一仓库的 git 简写 `github:gunanxiang20-oss/dsh-douyin-browser-macos`。装完完全退出并重开 DSH。
+
+首次启动浏览器时，如果本机没有 WebKit 引擎，`webkit-bridge.mjs` 会自动调用插件自带的 Playwright CLI 下载一次（约 90MB，`~/Library/Caches/ms-playwright`），失败时把原始报错透出。
+
 ## 改了什么
 
 原版用 Microsoft Edge + CDP：`browser-host.mjs` 启动 `chromium.launchPersistentContext({channel:'msedge'})`，再通过 `chromium.connectOverCDP` 连接。macOS 上没有 Edge，也没有独立的 Node 子进程时无法运行。
