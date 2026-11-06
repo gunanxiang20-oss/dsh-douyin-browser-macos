@@ -153,16 +153,3 @@ pnpm run test:native
 本项目原创代码采用 [MIT](LICENSE)。第三方源码和依赖的原许可证、版权及通知见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 公开准备、分发包检查与社区市场申请见 [发布记录](docs/publication.md)。
-
----
-
-## 🧩 附：LSPosed 模块（抖音小程序跳广告）
-
-`lsposed-module/` 是针对 **抖音 41.0.0** 的 LSPosed 模块源码与成品 APK：
-
-- 小游戏激励视频：**广告不播放，直接按「已看完」结算，金币 / 道具奖励照常到账**；
-- 小程序页面内 `<ad>` 广告组件不展示；
-- 抖音设置页注入「跳广告设置」入口；
-- Release 版做了 R8 全量混淆 + 字符串异或加密。
-
-详见 [lsposed-module/README.md](lsposed-module/README.md)。
